@@ -13,15 +13,21 @@ namespace Networking.Messages
     public class SocketHandle : SocketEvents
     {
         public static volatile int m_bufferSize = 1024;
-        private static volatile byte[] EOFSignature = { 0x45, 0x4F, 0x46 };
         public byte[] m_buffer = new byte[m_bufferSize];
+
+        public bool KeepReconnecting = true;
+        public int RetryPause = 1000;
+
+        private static volatile byte[] EOFSignature = { 0x45, 0x4F, 0x46 };
         private byte[] m_message = new byte[0];
         private bool m_isConnected;
 
-        private bool m_isInitiator = false;
         public EndPoint EndPoint { get; set; }
         public Socket Socket { get; set; }
-        public bool isConnected
+
+        private ManualResetEvent m_connectionRetry = new ManualResetEvent(false);
+        private ManualResetEvent m_connectionAttempt = new ManualResetEvent(false);
+        public bool IsConnected
         {
             get
             {
@@ -40,6 +46,7 @@ namespace Networking.Messages
                         else OnDisconnected(this);
                         m_isConnected = actuallyConnected;
                     }
+                    if (!actuallyConnected) m_connectionRetry.Set();
                 }
                 return actuallyConnected;
             }
@@ -49,7 +56,7 @@ namespace Networking.Messages
 
         public void Send(ProtobufMessage message)
         {
-            if (!isConnected) return;
+            if (!IsConnected) return;
             byte[] b_msg = message.ToByteArray();
             Array.Resize(ref b_msg, b_msg.Length + EOFSignature.Length);
             Buffer.BlockCopy(EOFSignature, 0, b_msg, b_msg.Length - EOFSignature.Length, EOFSignature.Length);
@@ -81,7 +88,7 @@ namespace Networking.Messages
         public void ReceiveCallback(IAsyncResult ar)
         {
             SocketHandle socketHandle = ar.AsyncState as SocketHandle;
-            if (!isConnected) return;
+            if (!IsConnected) return;
             int bytesReceived = Socket.EndReceive(ar);
             if (bytesReceived <= 0) return;
             if(m_message.Length == 0)
@@ -103,9 +110,54 @@ namespace Networking.Messages
             IPEndPoint remoteEP = new IPEndPoint(IPAddress.Parse(remoteAddress), remotePort);
             connectionThread.Start(remoteEP);
         }
+        private void SocketEventArg_Completed(object sender, SocketAsyncEventArgs e)
+        {
+            switch (e.LastOperation)
+            {
+                case SocketAsyncOperation.Connect:
+                    switch(e.SocketError)
+                    {
+                        case SocketError.Success:
+                            ConnectSocket(e);
+                            break;
+                        default:
+                            Console.WriteLine($"Socket error: {e.SocketError}.");
+                            break;
+                    }
+                    break;
+                default:
+                    Console.WriteLine($"No implementation for socket operation: {e.LastOperation}.");
+                    break;
+            }
+            m_connectionAttempt.Set();
+        }
+        private void ConnectSocket(SocketAsyncEventArgs e)
+        {
+            Socket = e.UserToken as Socket;
+            if (e.LastOperation != SocketAsyncOperation.Connect || e.SocketError != SocketError.Success) return;
+            EndPoint = Socket.RemoteEndPoint;
+        }
         private void ConnectionInstance(object param)
         {
-            
+            m_connectionAttempt.Reset();
+            m_connectionRetry.Reset();
+            IPEndPoint targetEP = param as IPEndPoint;
+            SocketAsyncEventArgs socketEventArg = new SocketAsyncEventArgs();
+            Socket sock = new Socket(targetEP.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
+            socketEventArg.Completed += SocketEventArg_Completed;
+            socketEventArg.UserToken = sock;
+            sock.ConnectAsync(socketEventArg);
+            m_connectionAttempt.WaitOne();
+            if(IsConnected)
+            {
+                Socket.BeginReceive(m_buffer, 0, m_bufferSize, 0, ReceiveCallback, null);
+            }
+            m_connectionRetry.WaitOne();
+            if (!KeepReconnecting) { Console.WriteLine($"Could not connect to {targetEP}, terminating connection handle."); return; }
+            Thread.Sleep(RetryPause);
+            Console.WriteLine($"Retrying connection...");
+            ConnectionInstance(param);
+
         }
 
     }
