@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+option csharp_namespace = "Networking.Messages";
+
+
+message ProtobufMessage {
+  oneof command {
+    
+    ExampleMessage ExampleMessage = 101;
+  }
+}
+message ExampleMessage {
+    string Message = 1;
+}
