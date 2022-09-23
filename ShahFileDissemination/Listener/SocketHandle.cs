@@ -31,11 +31,13 @@ namespace Networking.Messages
         {
             get
             {
+                
                 bool actuallyConnected = false;
                 try
                 {
                     actuallyConnected = !(Socket.Poll(1000, SelectMode.SelectRead) && Socket.Available == 0);
-                }catch (SocketException) { }
+                }
+                catch (SocketException) { }
                 catch (NullReferenceException) { }
                 catch (ObjectDisposedException) { }
                 finally

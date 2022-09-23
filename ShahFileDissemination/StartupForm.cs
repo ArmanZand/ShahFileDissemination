@@ -81,12 +81,24 @@ namespace ShahFileDissemination
         private void OnConnected(SocketHandle socketHandle)
         {
             PublicMemory.connectedHandles.Add(socketHandle);
-            Console.WriteLine($"{socketHandle.EndPoint} has connected.");
+            SocketListViewItem slvi = new SocketListViewItem();
+            slvi.Text = "#";
+            slvi.SubItems.Add($"{socketHandle.EndPoint}");
+            slvi.SocketHandle = socketHandle;
+            ConnectionsView.Items.Add(slvi);
         }
 
         private void OnDisconnected(SocketHandle socketHandle)
         {
             PublicMemory.connectedHandles.Remove(socketHandle);
+            foreach(SocketListViewItem slvi in ConnectionsView.Items)
+            {
+                if(socketHandle == slvi.SocketHandle)
+                {
+                    ConnectionsView.Items.Remove(slvi);
+                    return;
+                }
+            }
             //Console.WriteLine($"{secureHandle.EndPoint} has disconnected.");
         }
 

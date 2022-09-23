@@ -38,11 +38,14 @@
             this.ListenerIPTextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.ConnectBtn = new System.Windows.Forms.Button();
             this.RemotePortTextBox = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.RemoteIPTextBox = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.ConnectBtn = new System.Windows.Forms.Button();
+            this.RemoteIPTextBox = new System.Windows.Forms.TextBox();
+            this.ConnectionsView = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.statusStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -111,7 +114,7 @@
             this.ListenerIPTextBox.Location = new System.Drawing.Point(78, 16);
             this.ListenerIPTextBox.MaxLength = 15;
             this.ListenerIPTextBox.Name = "ListenerIPTextBox";
-            this.ListenerIPTextBox.Size = new System.Drawing.Size(90, 20);
+            this.ListenerIPTextBox.Size = new System.Drawing.Size(91, 20);
             this.ListenerIPTextBox.TabIndex = 2;
             // 
             // label1
@@ -125,6 +128,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.ConnectionsView);
             this.groupBox2.Controls.Add(this.ConnectBtn);
             this.groupBox2.Controls.Add(this.RemotePortTextBox);
             this.groupBox2.Controls.Add(this.label3);
@@ -132,10 +136,20 @@
             this.groupBox2.Controls.Add(this.RemoteIPTextBox);
             this.groupBox2.Location = new System.Drawing.Point(12, 108);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(179, 211);
+            this.groupBox2.Size = new System.Drawing.Size(179, 307);
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Connections";
+            // 
+            // ConnectBtn
+            // 
+            this.ConnectBtn.Location = new System.Drawing.Point(9, 78);
+            this.ConnectBtn.Name = "ConnectBtn";
+            this.ConnectBtn.Size = new System.Drawing.Size(160, 23);
+            this.ConnectBtn.TabIndex = 9;
+            this.ConnectBtn.Text = "Connect";
+            this.ConnectBtn.UseVisualStyleBackColor = true;
+            this.ConnectBtn.Click += new System.EventHandler(this.ConnectBtn_Click);
             // 
             // RemotePortTextBox
             // 
@@ -154,14 +168,6 @@
             this.label3.TabIndex = 6;
             this.label3.Text = "Remote Port";
             // 
-            // RemoteIPTextBox
-            // 
-            this.RemoteIPTextBox.Location = new System.Drawing.Point(78, 26);
-            this.RemoteIPTextBox.MaxLength = 15;
-            this.RemoteIPTextBox.Name = "RemoteIPTextBox";
-            this.RemoteIPTextBox.Size = new System.Drawing.Size(90, 20);
-            this.RemoteIPTextBox.TabIndex = 7;
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -171,15 +177,36 @@
             this.label4.TabIndex = 5;
             this.label4.Text = "Remote IP";
             // 
-            // ConnectBtn
+            // RemoteIPTextBox
             // 
-            this.ConnectBtn.Location = new System.Drawing.Point(9, 78);
-            this.ConnectBtn.Name = "ConnectBtn";
-            this.ConnectBtn.Size = new System.Drawing.Size(159, 23);
-            this.ConnectBtn.TabIndex = 9;
-            this.ConnectBtn.Text = "Connect";
-            this.ConnectBtn.UseVisualStyleBackColor = true;
-            this.ConnectBtn.Click += new System.EventHandler(this.ConnectBtn_Click);
+            this.RemoteIPTextBox.Location = new System.Drawing.Point(78, 26);
+            this.RemoteIPTextBox.MaxLength = 15;
+            this.RemoteIPTextBox.Name = "RemoteIPTextBox";
+            this.RemoteIPTextBox.Size = new System.Drawing.Size(91, 20);
+            this.RemoteIPTextBox.TabIndex = 7;
+            // 
+            // ConnectionsView
+            // 
+            this.ConnectionsView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader2});
+            this.ConnectionsView.HideSelection = false;
+            this.ConnectionsView.Location = new System.Drawing.Point(9, 107);
+            this.ConnectionsView.Name = "ConnectionsView";
+            this.ConnectionsView.Size = new System.Drawing.Size(160, 117);
+            this.ConnectionsView.TabIndex = 10;
+            this.ConnectionsView.UseCompatibleStateImageBehavior = false;
+            this.ConnectionsView.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "ID";
+            this.columnHeader1.Width = 30;
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Address";
+            this.columnHeader2.Width = 126;
             // 
             // StartupForm
             // 
@@ -221,6 +248,9 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox RemoteIPTextBox;
+        private System.Windows.Forms.ListView ConnectionsView;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.ColumnHeader columnHeader2;
     }
 }
 

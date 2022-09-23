@@ -17,18 +17,5 @@ namespace Networking.Messages
         protected void OnConnected(SocketHandle socketHandle) => Connected?.Invoke(socketHandle);
         protected void OnDisconnected(SocketHandle socketHandle) => Disconnected?.Invoke(socketHandle);
         protected void OnRead(SocketHandle socketHandle, ProtobufMessage message) => Read?.Invoke(socketHandle, message);
-
-        public Delegate[] ConnectedInvocationList()
-        {
-            return Connected.GetInvocationList();
-        }
-        public Delegate[] DisconnectedInvocationList()
-        {
-            return Disconnected.GetInvocationList();
-        }
-        public Delegate[] ReadInvocationList()
-        {
-            return Read.GetInvocationList();
-        }
     }
 }
