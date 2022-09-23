@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ShahFileDissemination;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -23,6 +24,11 @@ namespace Networking.Messages
         protected internal event HandleListenerStatus Listening;
         protected void OnListeningStatus(bool listening,string ip, int port) => Listening?.Invoke(listening, ip, port);
 
+        public SocketListener()
+        {
+            this.IP = DefaultParameters.ListenerIP;
+            this.Port = DefaultParameters.ListenerPort;
+        }
         public void SubscribeEvents(SocketHandle socketHandle)
         {
             socketHandle.Connected += OnConnected;
@@ -31,11 +37,18 @@ namespace Networking.Messages
         }
         public void Start(string localAddress, int localPort)
         {
-            Port = localPort;
-            IP = localAddress;
-            Thread listeningThread = new Thread(ListeningInstance);
-            IPEndPoint endPoint = new IPEndPoint(IPAddress.Parse(localAddress), localPort);
-            listeningThread.Start(endPoint);
+            try
+            {
+                Port = localPort;
+                IP = localAddress;
+                Thread listeningThread = new Thread(ListeningInstance);
+                IPEndPoint endPoint = new IPEndPoint(IPAddress.Parse(localAddress), localPort);
+                listeningThread.Start(endPoint);
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
         }
 
         public void Stop()

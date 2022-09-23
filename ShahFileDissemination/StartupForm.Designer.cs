@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StartupForm));
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.listenerStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.ListenerStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.ListenerCheckBox = new System.Windows.Forms.CheckBox();
             this.ListenerPortTextBox = new System.Windows.Forms.TextBox();
@@ -51,18 +51,18 @@
             // statusStrip1
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.listenerStatusLabel});
+            this.ListenerStatusLabel});
             this.statusStrip1.Location = new System.Drawing.Point(0, 577);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(931, 22);
             this.statusStrip1.TabIndex = 0;
             this.statusStrip1.Text = "statusStrip1";
             // 
-            // listenerStatusLabel
+            // ListenerStatusLabel
             // 
-            this.listenerStatusLabel.Name = "listenerStatusLabel";
-            this.listenerStatusLabel.Size = new System.Drawing.Size(71, 17);
-            this.listenerStatusLabel.Text = "Listener: Off";
+            this.ListenerStatusLabel.Name = "ListenerStatusLabel";
+            this.ListenerStatusLabel.Size = new System.Drawing.Size(71, 17);
+            this.ListenerStatusLabel.Text = "Listener: Off";
             // 
             // groupBox1
             // 
@@ -87,6 +87,7 @@
             this.ListenerCheckBox.TabIndex = 4;
             this.ListenerCheckBox.Text = "Run Listener";
             this.ListenerCheckBox.UseVisualStyleBackColor = true;
+            this.ListenerCheckBox.CheckedChanged += new System.EventHandler(this.ListenerCheckBox_CheckedChanged);
             // 
             // ListenerPortTextBox
             // 
@@ -207,7 +208,7 @@
         #endregion
 
         private System.Windows.Forms.StatusStrip statusStrip1;
-        private System.Windows.Forms.ToolStripStatusLabel listenerStatusLabel;
+        private System.Windows.Forms.ToolStripStatusLabel ListenerStatusLabel;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox ListenerIPTextBox;
         private System.Windows.Forms.Label label1;

@@ -17,21 +17,36 @@ namespace ShahFileDissemination
 
     public partial class StartupForm : Form
     {
+        private string[] m_cmdargs = null;
         public StartupForm(string[] args)
         {
             InitializeComponent();
-            Parser.Default.ParseArguments<Options>(args).WithParsed(RunOptions).WithNotParsed(HandleParseError);
+            m_cmdargs = args;
+            
+            
+        }
+        private void SubscribeListener()
+        {
+            PublicMemory.Listener.Listening += OnListenerStatus;
+            PublicMemory.Listener.Connected += OnConnected;
+            PublicMemory.Listener.Disconnected += OnDisconnected;
+            PublicMemory.Listener.Read += OnRead;
+        }
+        private void UnsubscribeListener()
+        {
+            PublicMemory.Listener.Listening -= OnListenerStatus;
+            PublicMemory.Listener.Connected -= OnConnected;
+            PublicMemory.Listener.Disconnected -= OnDisconnected;
+            PublicMemory.Listener.Read -= OnRead;
         }
         private void RunOptions(Options parseResults)
         {
             if (parseResults.cl_ip_port != null)
             {
                 string[] inputAddress = parseResults.cl_ip_port.Split(':');
-                PublicMemory.Listener.Listening += OnListenerStatus;
-                PublicMemory.Listener.Connected += OnConnected;
-                PublicMemory.Listener.Disconnected += OnDisconnected;
-                PublicMemory.Listener.Read += OnRead;
 
+
+                SubscribeListener();
                 PublicMemory.Listener.Start(inputAddress[0], int.Parse(inputAddress[1]));
             }
         }
@@ -43,12 +58,25 @@ namespace ShahFileDissemination
                 Console.WriteLine(err);
             }
         }
-        private void OnListenerStatus(bool listening,string ip, int port)
+        private void OnListenerStatus(bool listening, string ip, int port)
         {
-            if (listening == true)
-                listenerStatusLabel.Text = $"Listener: On ({ip}:{port})";
-            else
-                listenerStatusLabel.Text = "Listener: Off";
+            try
+            {
+                Invoke(new MethodInvoker(() =>
+                {
+                    ListenerCheckBox.Checked = listening;
+                    ListenerIPTextBox.Enabled = !listening;
+                    ListenerPortTextBox.Enabled = !listening;
+                    if (listening == true)
+                        ListenerStatusLabel.Text = $"Listener: On ({ip}:{port})";
+                    else
+                    {
+                        ListenerStatusLabel.Text = "Listener: Off";
+                        UnsubscribeListener();
+                    }
+                }));
+            }
+            catch (ObjectDisposedException) { }
         }
         private void OnConnected(SocketHandle socketHandle)
         {
@@ -69,11 +97,13 @@ namespace ShahFileDissemination
 
         private void StartupForm_Load(object sender, EventArgs e)
         {
-
+            Parser.Default.ParseArguments<Options>(m_cmdargs).WithParsed(RunOptions).WithNotParsed(HandleParseError);
             Invoke(new MethodInvoker(() =>
             {
                 ListenerIPTextBox.Text = PublicMemory.Listener.IP;
                 ListenerPortTextBox.Text = PublicMemory.Listener.Port.ToString();
+                RemoteIPTextBox.Text = DefaultParameters.RemoteIP;
+                RemotePortTextBox.Text = DefaultParameters.RemotePort.ToString();
             }));
             
         }
@@ -89,6 +119,26 @@ namespace ShahFileDissemination
             socketHandle.Disconnected += OnDisconnected;
             socketHandle.Read += OnRead;
             socketHandle.Connect(RemoteIPTextBox.Text, int.Parse(RemotePortTextBox.Text));
+        }
+
+        private void ListenerCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (ListenerCheckBox.Checked)
+            {
+                if (!PublicMemory.Listener.IsListening)
+                {
+                    PublicMemory.Listener = new SocketListener();
+                    SubscribeListener();
+                    PublicMemory.Listener.Start(ListenerIPTextBox.Text, int.Parse(ListenerPortTextBox.Text));
+                }
+            }
+            else
+            {
+                if (PublicMemory.Listener.IsListening)
+                {
+                    PublicMemory.Listener.Stop();
+                }
+            }
         }
     }
 }

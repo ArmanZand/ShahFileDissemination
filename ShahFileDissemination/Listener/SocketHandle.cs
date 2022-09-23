@@ -145,6 +145,7 @@ namespace Networking.Messages
             SocketAsyncEventArgs socketEventArg = new SocketAsyncEventArgs();
             Socket sock = new Socket(targetEP.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
             socketEventArg.Completed += SocketEventArg_Completed;
+            socketEventArg.RemoteEndPoint = targetEP;
             socketEventArg.UserToken = sock;
             sock.ConnectAsync(socketEventArg);
             m_connectionAttempt.WaitOne();
