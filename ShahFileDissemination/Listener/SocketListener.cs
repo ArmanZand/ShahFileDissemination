@@ -14,7 +14,7 @@ namespace Networking.Messages
     public class SocketListener : SocketEvents
     {
         private ManualResetEvent m_hangThread = new ManualResetEvent(false);
-        private bool m_IsListening = true;
+        private bool m_IsListening = false;
         public bool IsListening { get { return m_IsListening; } }
         public string IP = "127.0.0.1";
         public int Port = 0;
@@ -110,6 +110,7 @@ namespace Networking.Messages
             Socket listenSocket = new Socket(localEndPoint.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
             listenSocket.Bind(localEndPoint);
             listenSocket.Listen(100);
+            m_IsListening = true;
             OnListeningStatus(true,IP, Port);
             while (IsListening)
             {

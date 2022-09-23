@@ -7,6 +7,7 @@ using System.Text;
 using Google.Protobuf;
 using System.Threading.Tasks;
 using System.Threading;
+using ShahFileDissemination;
 
 namespace Networking.Messages
 {
@@ -15,8 +16,7 @@ namespace Networking.Messages
         public static volatile int m_bufferSize = 1024;
         public byte[] m_buffer = new byte[m_bufferSize];
 
-        public bool KeepReconnecting = true;
-        public int RetryPause = 1000;
+        
 
         private static volatile byte[] EOFSignature = { 0x45, 0x4F, 0x46 };
         private byte[] m_message = new byte[0];
@@ -105,6 +105,10 @@ namespace Networking.Messages
             EOFCheck();
             Socket.BeginReceive(m_buffer, 0, m_bufferSize, 0, result => ReceiveCallback(result), ar);
         }
+        public void Disconnect()
+        {
+            Socket.Close();
+        }
 
         public void Connect(string remoteAddress, int remotePort)
         {
@@ -135,7 +139,7 @@ namespace Networking.Messages
         }
         private void ConnectSocket(SocketAsyncEventArgs e)
         {
-            Socket = e.UserToken as Socket;
+            this.Socket = e.UserToken as Socket;
             if (e.LastOperation != SocketAsyncOperation.Connect || e.SocketError != SocketError.Success) return;
             EndPoint = Socket.RemoteEndPoint;
         }
@@ -151,13 +155,20 @@ namespace Networking.Messages
             socketEventArg.UserToken = sock;
             sock.ConnectAsync(socketEventArg);
             m_connectionAttempt.WaitOne();
-            if(IsConnected)
+            if (socketEventArg.LastOperation != SocketAsyncOperation.Connect || socketEventArg.SocketError != SocketError.Success)
             {
-                Socket.BeginReceive(m_buffer, 0, m_bufferSize, 0, ReceiveCallback, null);
+                m_connectionRetry.Set();
+            }
+            else
+            {
+                if (IsConnected)
+                {
+                    Socket.BeginReceive(m_buffer, 0, m_bufferSize, 0, ReceiveCallback, null);
+                }
             }
             m_connectionRetry.WaitOne();
-            if (!KeepReconnecting) { Console.WriteLine($"Could not connect to {targetEP}, terminating connection handle."); return; }
-            Thread.Sleep(RetryPause);
+            if (!DefaultParameters.KeepReconnecting) { Console.WriteLine($"Could not connect to {targetEP}, terminating connection handle."); return; }
+            Thread.Sleep(DefaultParameters.RetryPause);
             Console.WriteLine($"Retrying connection...");
             ConnectionInstance(param);
 

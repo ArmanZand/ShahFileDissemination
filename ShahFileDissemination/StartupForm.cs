@@ -85,20 +85,31 @@ namespace ShahFileDissemination
             slvi.Text = "#";
             slvi.SubItems.Add($"{socketHandle.EndPoint}");
             slvi.SocketHandle = socketHandle;
-            ConnectionsView.Items.Add(slvi);
+            Invoke(new MethodInvoker(() =>
+            {
+                ConnectionsView.Items.Add(slvi);
+            }
+            ));
         }
 
         private void OnDisconnected(SocketHandle socketHandle)
         {
             PublicMemory.connectedHandles.Remove(socketHandle);
-            foreach(SocketListViewItem slvi in ConnectionsView.Items)
+            try
             {
-                if(socketHandle == slvi.SocketHandle)
+                Invoke(new MethodInvoker(() =>
                 {
-                    ConnectionsView.Items.Remove(slvi);
-                    return;
-                }
+                    foreach (SocketListViewItem slvi in ConnectionsView.Items)
+                    {
+                        if (socketHandle == slvi.SocketHandle)
+                        {
+                            ConnectionsView.Items.Remove(slvi);
+                            return;
+                        }
+                    }
+                }));
             }
+            catch (ObjectDisposedException) { }
             //Console.WriteLine($"{secureHandle.EndPoint} has disconnected.");
         }
 
@@ -123,6 +134,11 @@ namespace ShahFileDissemination
         private void StartupForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             PublicMemory.Listener.Stop();
+            DefaultParameters.KeepReconnecting = false;
+            foreach(SocketHandle socketHandle in PublicMemory.connectedHandles)
+            {
+                socketHandle.Disconnect();
+            }
         }
         private void ConnectBtn_Click(object sender, EventArgs e)
         {
@@ -146,10 +162,8 @@ namespace ShahFileDissemination
             }
             else
             {
-                if (PublicMemory.Listener.IsListening)
-                {
-                    PublicMemory.Listener.Stop();
-                }
+                PublicMemory.Listener.Stop();
+              
             }
         }
     }
