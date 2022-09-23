@@ -53,9 +53,7 @@ namespace ShahFileDissemination
         private void OnConnected(SocketHandle socketHandle)
         {
             PublicMemory.connectedHandles.Add(socketHandle);
-            //Console.WriteLine($"{secureHandle.EndPoint} has connected.");
-            //RuntimeMemory.connectedHandles.Add(secureHandle);
-
+            Console.WriteLine($"{socketHandle.EndPoint} has connected.");
         }
 
         private void OnDisconnected(SocketHandle socketHandle)
@@ -72,11 +70,25 @@ namespace ShahFileDissemination
         private void StartupForm_Load(object sender, EventArgs e)
         {
 
+            Invoke(new MethodInvoker(() =>
+            {
+                ListenerIPTextBox.Text = PublicMemory.Listener.IP;
+                ListenerPortTextBox.Text = PublicMemory.Listener.Port.ToString();
+            }));
+            
         }
 
         private void StartupForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             PublicMemory.Listener.Stop();
+        }
+        private void ConnectBtn_Click(object sender, EventArgs e)
+        {
+            SocketHandle socketHandle = new SocketHandle();
+            socketHandle.Connected += OnConnected;
+            socketHandle.Disconnected += OnDisconnected;
+            socketHandle.Read += OnRead;
+            socketHandle.Connect(RemoteIPTextBox.Text, int.Parse(RemotePortTextBox.Text));
         }
     }
 }
