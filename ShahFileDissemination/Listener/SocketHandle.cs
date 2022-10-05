@@ -15,13 +15,13 @@ namespace Networking.Messages
     {
         public static volatile int m_bufferSize = 1024;
         public byte[] m_buffer = new byte[m_bufferSize];
-
+        public Role Role = Role.Undefined;
         
 
         private static volatile byte[] EOFSignature = { 0x45, 0x4F, 0x46 };
         private byte[] m_message = new byte[0];
         private bool m_isConnected;
-
+        public int Id = 0;
         public EndPoint EndPoint { get; set; }
         public Socket Socket { get; set; }
 
@@ -78,7 +78,7 @@ namespace Networking.Messages
             try
             {
                 ProtobufMessage pm = ProtobufMessage.Parser.ParseFrom(m_message);
-                OnRead(this, pm);
+                OnReceive(this, pm);
             }catch(InvalidProtocolBufferException e)
             {
                 Console.WriteLine(e.Message);
@@ -163,6 +163,7 @@ namespace Networking.Messages
             {
                 if (IsConnected)
                 {
+                    OnReady(this, true);
                     Socket.BeginReceive(m_buffer, 0, m_bufferSize, 0, ReceiveCallback, null);
                 }
             }

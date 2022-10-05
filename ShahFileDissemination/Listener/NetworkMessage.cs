@@ -24,15 +24,37 @@ namespace Networking.Messages {
     static NetworkMessageReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChROZXR3b3JrTWVzc2FnZS5wcm90byJHCg9Qcm90b2J1Zk1lc3NhZ2USKQoO",
-            "RXhhbXBsZU1lc3NhZ2UYZSABKAsyDy5FeGFtcGxlTWVzc2FnZUgAQgkKB2Nv",
-            "bW1hbmQiIQoORXhhbXBsZU1lc3NhZ2USDwoHTWVzc2FnZRgBIAEoCUIWqgIT",
-            "TmV0d29ya2luZy5NZXNzYWdlc2IGcHJvdG8z"));
+            "ChROZXR3b3JrTWVzc2FnZS5wcm90byKkAgoPUHJvdG9idWZNZXNzYWdlEh0K",
+            "CE5vZGVJbmZvGAEgASgLMgkuTm9kZUluZm9IABInCg1Ob2RlSW5mb1JlcGx5",
+            "GAIgASgLMg4uTm9kZUluZm9SZXBseUgAEjUKFFVuaXZhcmlhdGVQb2x5bm9t",
+            "aWFsGGUgASgLMhUuVW5pdmFyaWF0ZVBvbHlub21pYWxIABIZCgZTY2FsYXIY",
+            "ZiABKAsyBy5TY2FsYXJIABIlCgxSZXF1ZXN0U2hhcmUYZyABKAsyDS5SZXF1",
+            "ZXN0U2hhcmVIABIjCgtTZWNyZXRTaGFyZRhoIAEoCzIMLlNlY3JldFNoYXJl",
+            "SAASIAoJU3RyZWFtRW5kGMkBIAEoCzIKLlN0cmVhbUVuZEgAQgkKB2NvbW1h",
+            "bmQiFgoITm9kZUluZm8SCgoCSWQYASABKAUiGwoNTm9kZUluZm9SZXBseRIK",
+            "CgJJZBgBIAEoBSJiChRVbml2YXJpYXRlUG9seW5vbWlhbBITCgtPd25lck5v",
+            "ZGVJZBgBIAEoBRINCgVJbmRleBgLIAEoBRIUCgxDb2VmZmljaWVudHMYDCAD",
+            "KAkSEAoIU2VjcmV0SWQYDSABKAUikQEKCVN0cmVhbUVuZBI1ChRVbml2YXJp",
+            "YXRlUG9seW5vbWlhbBgBIAEoCzIVLlVuaXZhcmlhdGVQb2x5bm9taWFsSAAS",
+            "GQoGU2NhbGFyGAIgASgLMgcuU2NhbGFySAASIwoLU2VjcmV0U2hhcmUYAyAB",
+            "KAsyDC5TZWNyZXRTaGFyZUgAQg0KC21lc3NhZ2VUeXBlIl4KBlNjYWxhchIS",
+            "CgpGcm9tTm9kZUlkGAEgASgFEhAKCFRvTm9kZUlkGAIgASgFEg0KBUluZGV4",
+            "GAsgASgFEg0KBVZhbHVlGAwgASgJEhAKCFNlY3JldElkGA0gASgFIiAKDFJl",
+            "cXVlc3RTaGFyZRIQCghTZWNyZXRJZBgLIAEoBSJjCgtTZWNyZXRTaGFyZRIS",
+            "CgpGcm9tTm9kZUlkGAEgASgFEhAKCFRvTm9kZUlkGAIgASgFEg0KBUluZGV4",
+            "GAsgASgFEg0KBVZhbHVlGAwgASgJEhAKCFNlY3JldElkGA0gASgFQhaqAhNO",
+            "ZXR3b3JraW5nLk1lc3NhZ2VzYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Networking.Messages.ProtobufMessage), global::Networking.Messages.ProtobufMessage.Parser, new[]{ "ExampleMessage" }, new[]{ "Command" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Networking.Messages.ExampleMessage), global::Networking.Messages.ExampleMessage.Parser, new[]{ "Message" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Networking.Messages.ProtobufMessage), global::Networking.Messages.ProtobufMessage.Parser, new[]{ "NodeInfo", "NodeInfoReply", "UnivariatePolynomial", "Scalar", "RequestShare", "SecretShare", "StreamEnd" }, new[]{ "Command" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Networking.Messages.NodeInfo), global::Networking.Messages.NodeInfo.Parser, new[]{ "Id" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Networking.Messages.NodeInfoReply), global::Networking.Messages.NodeInfoReply.Parser, new[]{ "Id" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Networking.Messages.UnivariatePolynomial), global::Networking.Messages.UnivariatePolynomial.Parser, new[]{ "OwnerNodeId", "Index", "Coefficients", "SecretId" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Networking.Messages.StreamEnd), global::Networking.Messages.StreamEnd.Parser, new[]{ "UnivariatePolynomial", "Scalar", "SecretShare" }, new[]{ "MessageType" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Networking.Messages.Scalar), global::Networking.Messages.Scalar.Parser, new[]{ "FromNodeId", "ToNodeId", "Index", "Value", "SecretId" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Networking.Messages.RequestShare), global::Networking.Messages.RequestShare.Parser, new[]{ "SecretId" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Networking.Messages.SecretShare), global::Networking.Messages.SecretShare.Parser, new[]{ "FromNodeId", "ToNodeId", "Index", "Value", "SecretId" }, null, null, null, null)
           }));
     }
     #endregion
@@ -69,8 +91,26 @@ namespace Networking.Messages {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public ProtobufMessage(ProtobufMessage other) : this() {
       switch (other.CommandCase) {
-        case CommandOneofCase.ExampleMessage:
-          ExampleMessage = other.ExampleMessage.Clone();
+        case CommandOneofCase.NodeInfo:
+          NodeInfo = other.NodeInfo.Clone();
+          break;
+        case CommandOneofCase.NodeInfoReply:
+          NodeInfoReply = other.NodeInfoReply.Clone();
+          break;
+        case CommandOneofCase.UnivariatePolynomial:
+          UnivariatePolynomial = other.UnivariatePolynomial.Clone();
+          break;
+        case CommandOneofCase.Scalar:
+          Scalar = other.Scalar.Clone();
+          break;
+        case CommandOneofCase.RequestShare:
+          RequestShare = other.RequestShare.Clone();
+          break;
+        case CommandOneofCase.SecretShare:
+          SecretShare = other.SecretShare.Clone();
+          break;
+        case CommandOneofCase.StreamEnd:
+          StreamEnd = other.StreamEnd.Clone();
           break;
       }
 
@@ -82,14 +122,83 @@ namespace Networking.Messages {
       return new ProtobufMessage(this);
     }
 
-    /// <summary>Field number for the "ExampleMessage" field.</summary>
-    public const int ExampleMessageFieldNumber = 101;
+    /// <summary>Field number for the "NodeInfo" field.</summary>
+    public const int NodeInfoFieldNumber = 1;
+    /// <summary>
+    ///ExampleMessage ExampleMessage = 100;
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::Networking.Messages.ExampleMessage ExampleMessage {
-      get { return commandCase_ == CommandOneofCase.ExampleMessage ? (global::Networking.Messages.ExampleMessage) command_ : null; }
+    public global::Networking.Messages.NodeInfo NodeInfo {
+      get { return commandCase_ == CommandOneofCase.NodeInfo ? (global::Networking.Messages.NodeInfo) command_ : null; }
       set {
         command_ = value;
-        commandCase_ = value == null ? CommandOneofCase.None : CommandOneofCase.ExampleMessage;
+        commandCase_ = value == null ? CommandOneofCase.None : CommandOneofCase.NodeInfo;
+      }
+    }
+
+    /// <summary>Field number for the "NodeInfoReply" field.</summary>
+    public const int NodeInfoReplyFieldNumber = 2;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Networking.Messages.NodeInfoReply NodeInfoReply {
+      get { return commandCase_ == CommandOneofCase.NodeInfoReply ? (global::Networking.Messages.NodeInfoReply) command_ : null; }
+      set {
+        command_ = value;
+        commandCase_ = value == null ? CommandOneofCase.None : CommandOneofCase.NodeInfoReply;
+      }
+    }
+
+    /// <summary>Field number for the "UnivariatePolynomial" field.</summary>
+    public const int UnivariatePolynomialFieldNumber = 101;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Networking.Messages.UnivariatePolynomial UnivariatePolynomial {
+      get { return commandCase_ == CommandOneofCase.UnivariatePolynomial ? (global::Networking.Messages.UnivariatePolynomial) command_ : null; }
+      set {
+        command_ = value;
+        commandCase_ = value == null ? CommandOneofCase.None : CommandOneofCase.UnivariatePolynomial;
+      }
+    }
+
+    /// <summary>Field number for the "Scalar" field.</summary>
+    public const int ScalarFieldNumber = 102;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Networking.Messages.Scalar Scalar {
+      get { return commandCase_ == CommandOneofCase.Scalar ? (global::Networking.Messages.Scalar) command_ : null; }
+      set {
+        command_ = value;
+        commandCase_ = value == null ? CommandOneofCase.None : CommandOneofCase.Scalar;
+      }
+    }
+
+    /// <summary>Field number for the "RequestShare" field.</summary>
+    public const int RequestShareFieldNumber = 103;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Networking.Messages.RequestShare RequestShare {
+      get { return commandCase_ == CommandOneofCase.RequestShare ? (global::Networking.Messages.RequestShare) command_ : null; }
+      set {
+        command_ = value;
+        commandCase_ = value == null ? CommandOneofCase.None : CommandOneofCase.RequestShare;
+      }
+    }
+
+    /// <summary>Field number for the "SecretShare" field.</summary>
+    public const int SecretShareFieldNumber = 104;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Networking.Messages.SecretShare SecretShare {
+      get { return commandCase_ == CommandOneofCase.SecretShare ? (global::Networking.Messages.SecretShare) command_ : null; }
+      set {
+        command_ = value;
+        commandCase_ = value == null ? CommandOneofCase.None : CommandOneofCase.SecretShare;
+      }
+    }
+
+    /// <summary>Field number for the "StreamEnd" field.</summary>
+    public const int StreamEndFieldNumber = 201;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Networking.Messages.StreamEnd StreamEnd {
+      get { return commandCase_ == CommandOneofCase.StreamEnd ? (global::Networking.Messages.StreamEnd) command_ : null; }
+      set {
+        command_ = value;
+        commandCase_ = value == null ? CommandOneofCase.None : CommandOneofCase.StreamEnd;
       }
     }
 
@@ -97,7 +206,13 @@ namespace Networking.Messages {
     /// <summary>Enum of possible cases for the "command" oneof.</summary>
     public enum CommandOneofCase {
       None = 0,
-      ExampleMessage = 101,
+      NodeInfo = 1,
+      NodeInfoReply = 2,
+      UnivariatePolynomial = 101,
+      Scalar = 102,
+      RequestShare = 103,
+      SecretShare = 104,
+      StreamEnd = 201,
     }
     private CommandOneofCase commandCase_ = CommandOneofCase.None;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -124,7 +239,13 @@ namespace Networking.Messages {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (!object.Equals(ExampleMessage, other.ExampleMessage)) return false;
+      if (!object.Equals(NodeInfo, other.NodeInfo)) return false;
+      if (!object.Equals(NodeInfoReply, other.NodeInfoReply)) return false;
+      if (!object.Equals(UnivariatePolynomial, other.UnivariatePolynomial)) return false;
+      if (!object.Equals(Scalar, other.Scalar)) return false;
+      if (!object.Equals(RequestShare, other.RequestShare)) return false;
+      if (!object.Equals(SecretShare, other.SecretShare)) return false;
+      if (!object.Equals(StreamEnd, other.StreamEnd)) return false;
       if (CommandCase != other.CommandCase) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -132,7 +253,13 @@ namespace Networking.Messages {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
-      if (commandCase_ == CommandOneofCase.ExampleMessage) hash ^= ExampleMessage.GetHashCode();
+      if (commandCase_ == CommandOneofCase.NodeInfo) hash ^= NodeInfo.GetHashCode();
+      if (commandCase_ == CommandOneofCase.NodeInfoReply) hash ^= NodeInfoReply.GetHashCode();
+      if (commandCase_ == CommandOneofCase.UnivariatePolynomial) hash ^= UnivariatePolynomial.GetHashCode();
+      if (commandCase_ == CommandOneofCase.Scalar) hash ^= Scalar.GetHashCode();
+      if (commandCase_ == CommandOneofCase.RequestShare) hash ^= RequestShare.GetHashCode();
+      if (commandCase_ == CommandOneofCase.SecretShare) hash ^= SecretShare.GetHashCode();
+      if (commandCase_ == CommandOneofCase.StreamEnd) hash ^= StreamEnd.GetHashCode();
       hash ^= (int) commandCase_;
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -150,9 +277,33 @@ namespace Networking.Messages {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (commandCase_ == CommandOneofCase.ExampleMessage) {
+      if (commandCase_ == CommandOneofCase.NodeInfo) {
+        output.WriteRawTag(10);
+        output.WriteMessage(NodeInfo);
+      }
+      if (commandCase_ == CommandOneofCase.NodeInfoReply) {
+        output.WriteRawTag(18);
+        output.WriteMessage(NodeInfoReply);
+      }
+      if (commandCase_ == CommandOneofCase.UnivariatePolynomial) {
         output.WriteRawTag(170, 6);
-        output.WriteMessage(ExampleMessage);
+        output.WriteMessage(UnivariatePolynomial);
+      }
+      if (commandCase_ == CommandOneofCase.Scalar) {
+        output.WriteRawTag(178, 6);
+        output.WriteMessage(Scalar);
+      }
+      if (commandCase_ == CommandOneofCase.RequestShare) {
+        output.WriteRawTag(186, 6);
+        output.WriteMessage(RequestShare);
+      }
+      if (commandCase_ == CommandOneofCase.SecretShare) {
+        output.WriteRawTag(194, 6);
+        output.WriteMessage(SecretShare);
+      }
+      if (commandCase_ == CommandOneofCase.StreamEnd) {
+        output.WriteRawTag(202, 12);
+        output.WriteMessage(StreamEnd);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -163,9 +314,33 @@ namespace Networking.Messages {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (commandCase_ == CommandOneofCase.ExampleMessage) {
+      if (commandCase_ == CommandOneofCase.NodeInfo) {
+        output.WriteRawTag(10);
+        output.WriteMessage(NodeInfo);
+      }
+      if (commandCase_ == CommandOneofCase.NodeInfoReply) {
+        output.WriteRawTag(18);
+        output.WriteMessage(NodeInfoReply);
+      }
+      if (commandCase_ == CommandOneofCase.UnivariatePolynomial) {
         output.WriteRawTag(170, 6);
-        output.WriteMessage(ExampleMessage);
+        output.WriteMessage(UnivariatePolynomial);
+      }
+      if (commandCase_ == CommandOneofCase.Scalar) {
+        output.WriteRawTag(178, 6);
+        output.WriteMessage(Scalar);
+      }
+      if (commandCase_ == CommandOneofCase.RequestShare) {
+        output.WriteRawTag(186, 6);
+        output.WriteMessage(RequestShare);
+      }
+      if (commandCase_ == CommandOneofCase.SecretShare) {
+        output.WriteRawTag(194, 6);
+        output.WriteMessage(SecretShare);
+      }
+      if (commandCase_ == CommandOneofCase.StreamEnd) {
+        output.WriteRawTag(202, 12);
+        output.WriteMessage(StreamEnd);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -176,8 +351,26 @@ namespace Networking.Messages {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
-      if (commandCase_ == CommandOneofCase.ExampleMessage) {
-        size += 2 + pb::CodedOutputStream.ComputeMessageSize(ExampleMessage);
+      if (commandCase_ == CommandOneofCase.NodeInfo) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(NodeInfo);
+      }
+      if (commandCase_ == CommandOneofCase.NodeInfoReply) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(NodeInfoReply);
+      }
+      if (commandCase_ == CommandOneofCase.UnivariatePolynomial) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(UnivariatePolynomial);
+      }
+      if (commandCase_ == CommandOneofCase.Scalar) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(Scalar);
+      }
+      if (commandCase_ == CommandOneofCase.RequestShare) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(RequestShare);
+      }
+      if (commandCase_ == CommandOneofCase.SecretShare) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(SecretShare);
+      }
+      if (commandCase_ == CommandOneofCase.StreamEnd) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(StreamEnd);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -191,11 +384,47 @@ namespace Networking.Messages {
         return;
       }
       switch (other.CommandCase) {
-        case CommandOneofCase.ExampleMessage:
-          if (ExampleMessage == null) {
-            ExampleMessage = new global::Networking.Messages.ExampleMessage();
+        case CommandOneofCase.NodeInfo:
+          if (NodeInfo == null) {
+            NodeInfo = new global::Networking.Messages.NodeInfo();
           }
-          ExampleMessage.MergeFrom(other.ExampleMessage);
+          NodeInfo.MergeFrom(other.NodeInfo);
+          break;
+        case CommandOneofCase.NodeInfoReply:
+          if (NodeInfoReply == null) {
+            NodeInfoReply = new global::Networking.Messages.NodeInfoReply();
+          }
+          NodeInfoReply.MergeFrom(other.NodeInfoReply);
+          break;
+        case CommandOneofCase.UnivariatePolynomial:
+          if (UnivariatePolynomial == null) {
+            UnivariatePolynomial = new global::Networking.Messages.UnivariatePolynomial();
+          }
+          UnivariatePolynomial.MergeFrom(other.UnivariatePolynomial);
+          break;
+        case CommandOneofCase.Scalar:
+          if (Scalar == null) {
+            Scalar = new global::Networking.Messages.Scalar();
+          }
+          Scalar.MergeFrom(other.Scalar);
+          break;
+        case CommandOneofCase.RequestShare:
+          if (RequestShare == null) {
+            RequestShare = new global::Networking.Messages.RequestShare();
+          }
+          RequestShare.MergeFrom(other.RequestShare);
+          break;
+        case CommandOneofCase.SecretShare:
+          if (SecretShare == null) {
+            SecretShare = new global::Networking.Messages.SecretShare();
+          }
+          SecretShare.MergeFrom(other.SecretShare);
+          break;
+        case CommandOneofCase.StreamEnd:
+          if (StreamEnd == null) {
+            StreamEnd = new global::Networking.Messages.StreamEnd();
+          }
+          StreamEnd.MergeFrom(other.StreamEnd);
           break;
       }
 
@@ -213,13 +442,67 @@ namespace Networking.Messages {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 810: {
-            global::Networking.Messages.ExampleMessage subBuilder = new global::Networking.Messages.ExampleMessage();
-            if (commandCase_ == CommandOneofCase.ExampleMessage) {
-              subBuilder.MergeFrom(ExampleMessage);
+          case 10: {
+            global::Networking.Messages.NodeInfo subBuilder = new global::Networking.Messages.NodeInfo();
+            if (commandCase_ == CommandOneofCase.NodeInfo) {
+              subBuilder.MergeFrom(NodeInfo);
             }
             input.ReadMessage(subBuilder);
-            ExampleMessage = subBuilder;
+            NodeInfo = subBuilder;
+            break;
+          }
+          case 18: {
+            global::Networking.Messages.NodeInfoReply subBuilder = new global::Networking.Messages.NodeInfoReply();
+            if (commandCase_ == CommandOneofCase.NodeInfoReply) {
+              subBuilder.MergeFrom(NodeInfoReply);
+            }
+            input.ReadMessage(subBuilder);
+            NodeInfoReply = subBuilder;
+            break;
+          }
+          case 810: {
+            global::Networking.Messages.UnivariatePolynomial subBuilder = new global::Networking.Messages.UnivariatePolynomial();
+            if (commandCase_ == CommandOneofCase.UnivariatePolynomial) {
+              subBuilder.MergeFrom(UnivariatePolynomial);
+            }
+            input.ReadMessage(subBuilder);
+            UnivariatePolynomial = subBuilder;
+            break;
+          }
+          case 818: {
+            global::Networking.Messages.Scalar subBuilder = new global::Networking.Messages.Scalar();
+            if (commandCase_ == CommandOneofCase.Scalar) {
+              subBuilder.MergeFrom(Scalar);
+            }
+            input.ReadMessage(subBuilder);
+            Scalar = subBuilder;
+            break;
+          }
+          case 826: {
+            global::Networking.Messages.RequestShare subBuilder = new global::Networking.Messages.RequestShare();
+            if (commandCase_ == CommandOneofCase.RequestShare) {
+              subBuilder.MergeFrom(RequestShare);
+            }
+            input.ReadMessage(subBuilder);
+            RequestShare = subBuilder;
+            break;
+          }
+          case 834: {
+            global::Networking.Messages.SecretShare subBuilder = new global::Networking.Messages.SecretShare();
+            if (commandCase_ == CommandOneofCase.SecretShare) {
+              subBuilder.MergeFrom(SecretShare);
+            }
+            input.ReadMessage(subBuilder);
+            SecretShare = subBuilder;
+            break;
+          }
+          case 1610: {
+            global::Networking.Messages.StreamEnd subBuilder = new global::Networking.Messages.StreamEnd();
+            if (commandCase_ == CommandOneofCase.StreamEnd) {
+              subBuilder.MergeFrom(StreamEnd);
+            }
+            input.ReadMessage(subBuilder);
+            StreamEnd = subBuilder;
             break;
           }
         }
@@ -236,13 +519,67 @@ namespace Networking.Messages {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 810: {
-            global::Networking.Messages.ExampleMessage subBuilder = new global::Networking.Messages.ExampleMessage();
-            if (commandCase_ == CommandOneofCase.ExampleMessage) {
-              subBuilder.MergeFrom(ExampleMessage);
+          case 10: {
+            global::Networking.Messages.NodeInfo subBuilder = new global::Networking.Messages.NodeInfo();
+            if (commandCase_ == CommandOneofCase.NodeInfo) {
+              subBuilder.MergeFrom(NodeInfo);
             }
             input.ReadMessage(subBuilder);
-            ExampleMessage = subBuilder;
+            NodeInfo = subBuilder;
+            break;
+          }
+          case 18: {
+            global::Networking.Messages.NodeInfoReply subBuilder = new global::Networking.Messages.NodeInfoReply();
+            if (commandCase_ == CommandOneofCase.NodeInfoReply) {
+              subBuilder.MergeFrom(NodeInfoReply);
+            }
+            input.ReadMessage(subBuilder);
+            NodeInfoReply = subBuilder;
+            break;
+          }
+          case 810: {
+            global::Networking.Messages.UnivariatePolynomial subBuilder = new global::Networking.Messages.UnivariatePolynomial();
+            if (commandCase_ == CommandOneofCase.UnivariatePolynomial) {
+              subBuilder.MergeFrom(UnivariatePolynomial);
+            }
+            input.ReadMessage(subBuilder);
+            UnivariatePolynomial = subBuilder;
+            break;
+          }
+          case 818: {
+            global::Networking.Messages.Scalar subBuilder = new global::Networking.Messages.Scalar();
+            if (commandCase_ == CommandOneofCase.Scalar) {
+              subBuilder.MergeFrom(Scalar);
+            }
+            input.ReadMessage(subBuilder);
+            Scalar = subBuilder;
+            break;
+          }
+          case 826: {
+            global::Networking.Messages.RequestShare subBuilder = new global::Networking.Messages.RequestShare();
+            if (commandCase_ == CommandOneofCase.RequestShare) {
+              subBuilder.MergeFrom(RequestShare);
+            }
+            input.ReadMessage(subBuilder);
+            RequestShare = subBuilder;
+            break;
+          }
+          case 834: {
+            global::Networking.Messages.SecretShare subBuilder = new global::Networking.Messages.SecretShare();
+            if (commandCase_ == CommandOneofCase.SecretShare) {
+              subBuilder.MergeFrom(SecretShare);
+            }
+            input.ReadMessage(subBuilder);
+            SecretShare = subBuilder;
+            break;
+          }
+          case 1610: {
+            global::Networking.Messages.StreamEnd subBuilder = new global::Networking.Messages.StreamEnd();
+            if (commandCase_ == CommandOneofCase.StreamEnd) {
+              subBuilder.MergeFrom(StreamEnd);
+            }
+            input.ReadMessage(subBuilder);
+            StreamEnd = subBuilder;
             break;
           }
         }
@@ -252,15 +589,15 @@ namespace Networking.Messages {
 
   }
 
-  public sealed partial class ExampleMessage : pb::IMessage<ExampleMessage>
+  public sealed partial class NodeInfo : pb::IMessage<NodeInfo>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
   #endif
   {
-    private static readonly pb::MessageParser<ExampleMessage> _parser = new pb::MessageParser<ExampleMessage>(() => new ExampleMessage());
+    private static readonly pb::MessageParser<NodeInfo> _parser = new pb::MessageParser<NodeInfo>(() => new NodeInfo());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<ExampleMessage> Parser { get { return _parser; } }
+    public static pb::MessageParser<NodeInfo> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
@@ -273,55 +610,55 @@ namespace Networking.Messages {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public ExampleMessage() {
+    public NodeInfo() {
       OnConstruction();
     }
 
     partial void OnConstruction();
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public ExampleMessage(ExampleMessage other) : this() {
-      message_ = other.message_;
+    public NodeInfo(NodeInfo other) : this() {
+      id_ = other.id_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public ExampleMessage Clone() {
-      return new ExampleMessage(this);
+    public NodeInfo Clone() {
+      return new NodeInfo(this);
     }
 
-    /// <summary>Field number for the "Message" field.</summary>
-    public const int MessageFieldNumber = 1;
-    private string message_ = "";
+    /// <summary>Field number for the "Id" field.</summary>
+    public const int IdFieldNumber = 1;
+    private int id_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string Message {
-      get { return message_; }
+    public int Id {
+      get { return id_; }
       set {
-        message_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        id_ = value;
       }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
-      return Equals(other as ExampleMessage);
+      return Equals(other as NodeInfo);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(ExampleMessage other) {
+    public bool Equals(NodeInfo other) {
       if (ReferenceEquals(other, null)) {
         return false;
       }
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (Message != other.Message) return false;
+      if (Id != other.Id) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
-      if (Message.Length != 0) hash ^= Message.GetHashCode();
+      if (Id != 0) hash ^= Id.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -338,9 +675,9 @@ namespace Networking.Messages {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (Message.Length != 0) {
-        output.WriteRawTag(10);
-        output.WriteString(Message);
+      if (Id != 0) {
+        output.WriteRawTag(8);
+        output.WriteInt32(Id);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -351,9 +688,9 @@ namespace Networking.Messages {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (Message.Length != 0) {
-        output.WriteRawTag(10);
-        output.WriteString(Message);
+      if (Id != 0) {
+        output.WriteRawTag(8);
+        output.WriteInt32(Id);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -364,8 +701,8 @@ namespace Networking.Messages {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
-      if (Message.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(Message);
+      if (Id != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Id);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -374,12 +711,12 @@ namespace Networking.Messages {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(ExampleMessage other) {
+    public void MergeFrom(NodeInfo other) {
       if (other == null) {
         return;
       }
-      if (other.Message.Length != 0) {
-        Message = other.Message;
+      if (other.Id != 0) {
+        Id = other.Id;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -395,8 +732,743 @@ namespace Networking.Messages {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
+          case 8: {
+            Id = input.ReadInt32();
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 8: {
+            Id = input.ReadInt32();
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
+  public sealed partial class NodeInfoReply : pb::IMessage<NodeInfoReply>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<NodeInfoReply> _parser = new pb::MessageParser<NodeInfoReply>(() => new NodeInfoReply());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<NodeInfoReply> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Networking.Messages.NetworkMessageReflection.Descriptor.MessageTypes[2]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public NodeInfoReply() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public NodeInfoReply(NodeInfoReply other) : this() {
+      id_ = other.id_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public NodeInfoReply Clone() {
+      return new NodeInfoReply(this);
+    }
+
+    /// <summary>Field number for the "Id" field.</summary>
+    public const int IdFieldNumber = 1;
+    private int id_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int Id {
+      get { return id_; }
+      set {
+        id_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as NodeInfoReply);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(NodeInfoReply other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (Id != other.Id) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (Id != 0) hash ^= Id.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (Id != 0) {
+        output.WriteRawTag(8);
+        output.WriteInt32(Id);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Id != 0) {
+        output.WriteRawTag(8);
+        output.WriteInt32(Id);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (Id != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Id);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(NodeInfoReply other) {
+      if (other == null) {
+        return;
+      }
+      if (other.Id != 0) {
+        Id = other.Id;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 8: {
+            Id = input.ReadInt32();
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 8: {
+            Id = input.ReadInt32();
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
+  public sealed partial class UnivariatePolynomial : pb::IMessage<UnivariatePolynomial>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<UnivariatePolynomial> _parser = new pb::MessageParser<UnivariatePolynomial>(() => new UnivariatePolynomial());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<UnivariatePolynomial> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Networking.Messages.NetworkMessageReflection.Descriptor.MessageTypes[3]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public UnivariatePolynomial() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public UnivariatePolynomial(UnivariatePolynomial other) : this() {
+      ownerNodeId_ = other.ownerNodeId_;
+      index_ = other.index_;
+      coefficients_ = other.coefficients_.Clone();
+      secretId_ = other.secretId_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public UnivariatePolynomial Clone() {
+      return new UnivariatePolynomial(this);
+    }
+
+    /// <summary>Field number for the "OwnerNodeId" field.</summary>
+    public const int OwnerNodeIdFieldNumber = 1;
+    private int ownerNodeId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int OwnerNodeId {
+      get { return ownerNodeId_; }
+      set {
+        ownerNodeId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "Index" field.</summary>
+    public const int IndexFieldNumber = 11;
+    private int index_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int Index {
+      get { return index_; }
+      set {
+        index_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "Coefficients" field.</summary>
+    public const int CoefficientsFieldNumber = 12;
+    private static readonly pb::FieldCodec<string> _repeated_coefficients_codec
+        = pb::FieldCodec.ForString(98);
+    private readonly pbc::RepeatedField<string> coefficients_ = new pbc::RepeatedField<string>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<string> Coefficients {
+      get { return coefficients_; }
+    }
+
+    /// <summary>Field number for the "SecretId" field.</summary>
+    public const int SecretIdFieldNumber = 13;
+    private int secretId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int SecretId {
+      get { return secretId_; }
+      set {
+        secretId_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as UnivariatePolynomial);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(UnivariatePolynomial other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (OwnerNodeId != other.OwnerNodeId) return false;
+      if (Index != other.Index) return false;
+      if(!coefficients_.Equals(other.coefficients_)) return false;
+      if (SecretId != other.SecretId) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (OwnerNodeId != 0) hash ^= OwnerNodeId.GetHashCode();
+      if (Index != 0) hash ^= Index.GetHashCode();
+      hash ^= coefficients_.GetHashCode();
+      if (SecretId != 0) hash ^= SecretId.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (OwnerNodeId != 0) {
+        output.WriteRawTag(8);
+        output.WriteInt32(OwnerNodeId);
+      }
+      if (Index != 0) {
+        output.WriteRawTag(88);
+        output.WriteInt32(Index);
+      }
+      coefficients_.WriteTo(output, _repeated_coefficients_codec);
+      if (SecretId != 0) {
+        output.WriteRawTag(104);
+        output.WriteInt32(SecretId);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (OwnerNodeId != 0) {
+        output.WriteRawTag(8);
+        output.WriteInt32(OwnerNodeId);
+      }
+      if (Index != 0) {
+        output.WriteRawTag(88);
+        output.WriteInt32(Index);
+      }
+      coefficients_.WriteTo(ref output, _repeated_coefficients_codec);
+      if (SecretId != 0) {
+        output.WriteRawTag(104);
+        output.WriteInt32(SecretId);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (OwnerNodeId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(OwnerNodeId);
+      }
+      if (Index != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Index);
+      }
+      size += coefficients_.CalculateSize(_repeated_coefficients_codec);
+      if (SecretId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(SecretId);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(UnivariatePolynomial other) {
+      if (other == null) {
+        return;
+      }
+      if (other.OwnerNodeId != 0) {
+        OwnerNodeId = other.OwnerNodeId;
+      }
+      if (other.Index != 0) {
+        Index = other.Index;
+      }
+      coefficients_.Add(other.coefficients_);
+      if (other.SecretId != 0) {
+        SecretId = other.SecretId;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 8: {
+            OwnerNodeId = input.ReadInt32();
+            break;
+          }
+          case 88: {
+            Index = input.ReadInt32();
+            break;
+          }
+          case 98: {
+            coefficients_.AddEntriesFrom(input, _repeated_coefficients_codec);
+            break;
+          }
+          case 104: {
+            SecretId = input.ReadInt32();
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 8: {
+            OwnerNodeId = input.ReadInt32();
+            break;
+          }
+          case 88: {
+            Index = input.ReadInt32();
+            break;
+          }
+          case 98: {
+            coefficients_.AddEntriesFrom(ref input, _repeated_coefficients_codec);
+            break;
+          }
+          case 104: {
+            SecretId = input.ReadInt32();
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
+  public sealed partial class StreamEnd : pb::IMessage<StreamEnd>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<StreamEnd> _parser = new pb::MessageParser<StreamEnd>(() => new StreamEnd());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<StreamEnd> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Networking.Messages.NetworkMessageReflection.Descriptor.MessageTypes[4]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public StreamEnd() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public StreamEnd(StreamEnd other) : this() {
+      switch (other.MessageTypeCase) {
+        case MessageTypeOneofCase.UnivariatePolynomial:
+          UnivariatePolynomial = other.UnivariatePolynomial.Clone();
+          break;
+        case MessageTypeOneofCase.Scalar:
+          Scalar = other.Scalar.Clone();
+          break;
+        case MessageTypeOneofCase.SecretShare:
+          SecretShare = other.SecretShare.Clone();
+          break;
+      }
+
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public StreamEnd Clone() {
+      return new StreamEnd(this);
+    }
+
+    /// <summary>Field number for the "UnivariatePolynomial" field.</summary>
+    public const int UnivariatePolynomialFieldNumber = 1;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Networking.Messages.UnivariatePolynomial UnivariatePolynomial {
+      get { return messageTypeCase_ == MessageTypeOneofCase.UnivariatePolynomial ? (global::Networking.Messages.UnivariatePolynomial) messageType_ : null; }
+      set {
+        messageType_ = value;
+        messageTypeCase_ = value == null ? MessageTypeOneofCase.None : MessageTypeOneofCase.UnivariatePolynomial;
+      }
+    }
+
+    /// <summary>Field number for the "Scalar" field.</summary>
+    public const int ScalarFieldNumber = 2;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Networking.Messages.Scalar Scalar {
+      get { return messageTypeCase_ == MessageTypeOneofCase.Scalar ? (global::Networking.Messages.Scalar) messageType_ : null; }
+      set {
+        messageType_ = value;
+        messageTypeCase_ = value == null ? MessageTypeOneofCase.None : MessageTypeOneofCase.Scalar;
+      }
+    }
+
+    /// <summary>Field number for the "SecretShare" field.</summary>
+    public const int SecretShareFieldNumber = 3;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Networking.Messages.SecretShare SecretShare {
+      get { return messageTypeCase_ == MessageTypeOneofCase.SecretShare ? (global::Networking.Messages.SecretShare) messageType_ : null; }
+      set {
+        messageType_ = value;
+        messageTypeCase_ = value == null ? MessageTypeOneofCase.None : MessageTypeOneofCase.SecretShare;
+      }
+    }
+
+    private object messageType_;
+    /// <summary>Enum of possible cases for the "messageType" oneof.</summary>
+    public enum MessageTypeOneofCase {
+      None = 0,
+      UnivariatePolynomial = 1,
+      Scalar = 2,
+      SecretShare = 3,
+    }
+    private MessageTypeOneofCase messageTypeCase_ = MessageTypeOneofCase.None;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public MessageTypeOneofCase MessageTypeCase {
+      get { return messageTypeCase_; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void ClearMessageType() {
+      messageTypeCase_ = MessageTypeOneofCase.None;
+      messageType_ = null;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as StreamEnd);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(StreamEnd other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (!object.Equals(UnivariatePolynomial, other.UnivariatePolynomial)) return false;
+      if (!object.Equals(Scalar, other.Scalar)) return false;
+      if (!object.Equals(SecretShare, other.SecretShare)) return false;
+      if (MessageTypeCase != other.MessageTypeCase) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (messageTypeCase_ == MessageTypeOneofCase.UnivariatePolynomial) hash ^= UnivariatePolynomial.GetHashCode();
+      if (messageTypeCase_ == MessageTypeOneofCase.Scalar) hash ^= Scalar.GetHashCode();
+      if (messageTypeCase_ == MessageTypeOneofCase.SecretShare) hash ^= SecretShare.GetHashCode();
+      hash ^= (int) messageTypeCase_;
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (messageTypeCase_ == MessageTypeOneofCase.UnivariatePolynomial) {
+        output.WriteRawTag(10);
+        output.WriteMessage(UnivariatePolynomial);
+      }
+      if (messageTypeCase_ == MessageTypeOneofCase.Scalar) {
+        output.WriteRawTag(18);
+        output.WriteMessage(Scalar);
+      }
+      if (messageTypeCase_ == MessageTypeOneofCase.SecretShare) {
+        output.WriteRawTag(26);
+        output.WriteMessage(SecretShare);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (messageTypeCase_ == MessageTypeOneofCase.UnivariatePolynomial) {
+        output.WriteRawTag(10);
+        output.WriteMessage(UnivariatePolynomial);
+      }
+      if (messageTypeCase_ == MessageTypeOneofCase.Scalar) {
+        output.WriteRawTag(18);
+        output.WriteMessage(Scalar);
+      }
+      if (messageTypeCase_ == MessageTypeOneofCase.SecretShare) {
+        output.WriteRawTag(26);
+        output.WriteMessage(SecretShare);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (messageTypeCase_ == MessageTypeOneofCase.UnivariatePolynomial) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(UnivariatePolynomial);
+      }
+      if (messageTypeCase_ == MessageTypeOneofCase.Scalar) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Scalar);
+      }
+      if (messageTypeCase_ == MessageTypeOneofCase.SecretShare) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(SecretShare);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(StreamEnd other) {
+      if (other == null) {
+        return;
+      }
+      switch (other.MessageTypeCase) {
+        case MessageTypeOneofCase.UnivariatePolynomial:
+          if (UnivariatePolynomial == null) {
+            UnivariatePolynomial = new global::Networking.Messages.UnivariatePolynomial();
+          }
+          UnivariatePolynomial.MergeFrom(other.UnivariatePolynomial);
+          break;
+        case MessageTypeOneofCase.Scalar:
+          if (Scalar == null) {
+            Scalar = new global::Networking.Messages.Scalar();
+          }
+          Scalar.MergeFrom(other.Scalar);
+          break;
+        case MessageTypeOneofCase.SecretShare:
+          if (SecretShare == null) {
+            SecretShare = new global::Networking.Messages.SecretShare();
+          }
+          SecretShare.MergeFrom(other.SecretShare);
+          break;
+      }
+
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
           case 10: {
-            Message = input.ReadString();
+            global::Networking.Messages.UnivariatePolynomial subBuilder = new global::Networking.Messages.UnivariatePolynomial();
+            if (messageTypeCase_ == MessageTypeOneofCase.UnivariatePolynomial) {
+              subBuilder.MergeFrom(UnivariatePolynomial);
+            }
+            input.ReadMessage(subBuilder);
+            UnivariatePolynomial = subBuilder;
+            break;
+          }
+          case 18: {
+            global::Networking.Messages.Scalar subBuilder = new global::Networking.Messages.Scalar();
+            if (messageTypeCase_ == MessageTypeOneofCase.Scalar) {
+              subBuilder.MergeFrom(Scalar);
+            }
+            input.ReadMessage(subBuilder);
+            Scalar = subBuilder;
+            break;
+          }
+          case 26: {
+            global::Networking.Messages.SecretShare subBuilder = new global::Networking.Messages.SecretShare();
+            if (messageTypeCase_ == MessageTypeOneofCase.SecretShare) {
+              subBuilder.MergeFrom(SecretShare);
+            }
+            input.ReadMessage(subBuilder);
+            SecretShare = subBuilder;
             break;
           }
         }
@@ -414,7 +1486,834 @@ namespace Networking.Messages {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 10: {
-            Message = input.ReadString();
+            global::Networking.Messages.UnivariatePolynomial subBuilder = new global::Networking.Messages.UnivariatePolynomial();
+            if (messageTypeCase_ == MessageTypeOneofCase.UnivariatePolynomial) {
+              subBuilder.MergeFrom(UnivariatePolynomial);
+            }
+            input.ReadMessage(subBuilder);
+            UnivariatePolynomial = subBuilder;
+            break;
+          }
+          case 18: {
+            global::Networking.Messages.Scalar subBuilder = new global::Networking.Messages.Scalar();
+            if (messageTypeCase_ == MessageTypeOneofCase.Scalar) {
+              subBuilder.MergeFrom(Scalar);
+            }
+            input.ReadMessage(subBuilder);
+            Scalar = subBuilder;
+            break;
+          }
+          case 26: {
+            global::Networking.Messages.SecretShare subBuilder = new global::Networking.Messages.SecretShare();
+            if (messageTypeCase_ == MessageTypeOneofCase.SecretShare) {
+              subBuilder.MergeFrom(SecretShare);
+            }
+            input.ReadMessage(subBuilder);
+            SecretShare = subBuilder;
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
+  public sealed partial class Scalar : pb::IMessage<Scalar>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<Scalar> _parser = new pb::MessageParser<Scalar>(() => new Scalar());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<Scalar> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Networking.Messages.NetworkMessageReflection.Descriptor.MessageTypes[5]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public Scalar() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public Scalar(Scalar other) : this() {
+      fromNodeId_ = other.fromNodeId_;
+      toNodeId_ = other.toNodeId_;
+      index_ = other.index_;
+      value_ = other.value_;
+      secretId_ = other.secretId_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public Scalar Clone() {
+      return new Scalar(this);
+    }
+
+    /// <summary>Field number for the "FromNodeId" field.</summary>
+    public const int FromNodeIdFieldNumber = 1;
+    private int fromNodeId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int FromNodeId {
+      get { return fromNodeId_; }
+      set {
+        fromNodeId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "ToNodeId" field.</summary>
+    public const int ToNodeIdFieldNumber = 2;
+    private int toNodeId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int ToNodeId {
+      get { return toNodeId_; }
+      set {
+        toNodeId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "Index" field.</summary>
+    public const int IndexFieldNumber = 11;
+    private int index_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int Index {
+      get { return index_; }
+      set {
+        index_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "Value" field.</summary>
+    public const int ValueFieldNumber = 12;
+    private string value_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Value {
+      get { return value_; }
+      set {
+        value_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "SecretId" field.</summary>
+    public const int SecretIdFieldNumber = 13;
+    private int secretId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int SecretId {
+      get { return secretId_; }
+      set {
+        secretId_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as Scalar);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(Scalar other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (FromNodeId != other.FromNodeId) return false;
+      if (ToNodeId != other.ToNodeId) return false;
+      if (Index != other.Index) return false;
+      if (Value != other.Value) return false;
+      if (SecretId != other.SecretId) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (FromNodeId != 0) hash ^= FromNodeId.GetHashCode();
+      if (ToNodeId != 0) hash ^= ToNodeId.GetHashCode();
+      if (Index != 0) hash ^= Index.GetHashCode();
+      if (Value.Length != 0) hash ^= Value.GetHashCode();
+      if (SecretId != 0) hash ^= SecretId.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (FromNodeId != 0) {
+        output.WriteRawTag(8);
+        output.WriteInt32(FromNodeId);
+      }
+      if (ToNodeId != 0) {
+        output.WriteRawTag(16);
+        output.WriteInt32(ToNodeId);
+      }
+      if (Index != 0) {
+        output.WriteRawTag(88);
+        output.WriteInt32(Index);
+      }
+      if (Value.Length != 0) {
+        output.WriteRawTag(98);
+        output.WriteString(Value);
+      }
+      if (SecretId != 0) {
+        output.WriteRawTag(104);
+        output.WriteInt32(SecretId);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (FromNodeId != 0) {
+        output.WriteRawTag(8);
+        output.WriteInt32(FromNodeId);
+      }
+      if (ToNodeId != 0) {
+        output.WriteRawTag(16);
+        output.WriteInt32(ToNodeId);
+      }
+      if (Index != 0) {
+        output.WriteRawTag(88);
+        output.WriteInt32(Index);
+      }
+      if (Value.Length != 0) {
+        output.WriteRawTag(98);
+        output.WriteString(Value);
+      }
+      if (SecretId != 0) {
+        output.WriteRawTag(104);
+        output.WriteInt32(SecretId);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (FromNodeId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(FromNodeId);
+      }
+      if (ToNodeId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(ToNodeId);
+      }
+      if (Index != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Index);
+      }
+      if (Value.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Value);
+      }
+      if (SecretId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(SecretId);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(Scalar other) {
+      if (other == null) {
+        return;
+      }
+      if (other.FromNodeId != 0) {
+        FromNodeId = other.FromNodeId;
+      }
+      if (other.ToNodeId != 0) {
+        ToNodeId = other.ToNodeId;
+      }
+      if (other.Index != 0) {
+        Index = other.Index;
+      }
+      if (other.Value.Length != 0) {
+        Value = other.Value;
+      }
+      if (other.SecretId != 0) {
+        SecretId = other.SecretId;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 8: {
+            FromNodeId = input.ReadInt32();
+            break;
+          }
+          case 16: {
+            ToNodeId = input.ReadInt32();
+            break;
+          }
+          case 88: {
+            Index = input.ReadInt32();
+            break;
+          }
+          case 98: {
+            Value = input.ReadString();
+            break;
+          }
+          case 104: {
+            SecretId = input.ReadInt32();
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 8: {
+            FromNodeId = input.ReadInt32();
+            break;
+          }
+          case 16: {
+            ToNodeId = input.ReadInt32();
+            break;
+          }
+          case 88: {
+            Index = input.ReadInt32();
+            break;
+          }
+          case 98: {
+            Value = input.ReadString();
+            break;
+          }
+          case 104: {
+            SecretId = input.ReadInt32();
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
+  public sealed partial class RequestShare : pb::IMessage<RequestShare>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<RequestShare> _parser = new pb::MessageParser<RequestShare>(() => new RequestShare());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<RequestShare> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Networking.Messages.NetworkMessageReflection.Descriptor.MessageTypes[6]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public RequestShare() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public RequestShare(RequestShare other) : this() {
+      secretId_ = other.secretId_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public RequestShare Clone() {
+      return new RequestShare(this);
+    }
+
+    /// <summary>Field number for the "SecretId" field.</summary>
+    public const int SecretIdFieldNumber = 11;
+    private int secretId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int SecretId {
+      get { return secretId_; }
+      set {
+        secretId_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as RequestShare);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(RequestShare other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (SecretId != other.SecretId) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (SecretId != 0) hash ^= SecretId.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (SecretId != 0) {
+        output.WriteRawTag(88);
+        output.WriteInt32(SecretId);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (SecretId != 0) {
+        output.WriteRawTag(88);
+        output.WriteInt32(SecretId);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (SecretId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(SecretId);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(RequestShare other) {
+      if (other == null) {
+        return;
+      }
+      if (other.SecretId != 0) {
+        SecretId = other.SecretId;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 88: {
+            SecretId = input.ReadInt32();
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 88: {
+            SecretId = input.ReadInt32();
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
+  public sealed partial class SecretShare : pb::IMessage<SecretShare>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<SecretShare> _parser = new pb::MessageParser<SecretShare>(() => new SecretShare());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<SecretShare> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Networking.Messages.NetworkMessageReflection.Descriptor.MessageTypes[7]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public SecretShare() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public SecretShare(SecretShare other) : this() {
+      fromNodeId_ = other.fromNodeId_;
+      toNodeId_ = other.toNodeId_;
+      index_ = other.index_;
+      value_ = other.value_;
+      secretId_ = other.secretId_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public SecretShare Clone() {
+      return new SecretShare(this);
+    }
+
+    /// <summary>Field number for the "FromNodeId" field.</summary>
+    public const int FromNodeIdFieldNumber = 1;
+    private int fromNodeId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int FromNodeId {
+      get { return fromNodeId_; }
+      set {
+        fromNodeId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "ToNodeId" field.</summary>
+    public const int ToNodeIdFieldNumber = 2;
+    private int toNodeId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int ToNodeId {
+      get { return toNodeId_; }
+      set {
+        toNodeId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "Index" field.</summary>
+    public const int IndexFieldNumber = 11;
+    private int index_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int Index {
+      get { return index_; }
+      set {
+        index_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "Value" field.</summary>
+    public const int ValueFieldNumber = 12;
+    private string value_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Value {
+      get { return value_; }
+      set {
+        value_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "SecretId" field.</summary>
+    public const int SecretIdFieldNumber = 13;
+    private int secretId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int SecretId {
+      get { return secretId_; }
+      set {
+        secretId_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as SecretShare);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(SecretShare other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (FromNodeId != other.FromNodeId) return false;
+      if (ToNodeId != other.ToNodeId) return false;
+      if (Index != other.Index) return false;
+      if (Value != other.Value) return false;
+      if (SecretId != other.SecretId) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (FromNodeId != 0) hash ^= FromNodeId.GetHashCode();
+      if (ToNodeId != 0) hash ^= ToNodeId.GetHashCode();
+      if (Index != 0) hash ^= Index.GetHashCode();
+      if (Value.Length != 0) hash ^= Value.GetHashCode();
+      if (SecretId != 0) hash ^= SecretId.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (FromNodeId != 0) {
+        output.WriteRawTag(8);
+        output.WriteInt32(FromNodeId);
+      }
+      if (ToNodeId != 0) {
+        output.WriteRawTag(16);
+        output.WriteInt32(ToNodeId);
+      }
+      if (Index != 0) {
+        output.WriteRawTag(88);
+        output.WriteInt32(Index);
+      }
+      if (Value.Length != 0) {
+        output.WriteRawTag(98);
+        output.WriteString(Value);
+      }
+      if (SecretId != 0) {
+        output.WriteRawTag(104);
+        output.WriteInt32(SecretId);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (FromNodeId != 0) {
+        output.WriteRawTag(8);
+        output.WriteInt32(FromNodeId);
+      }
+      if (ToNodeId != 0) {
+        output.WriteRawTag(16);
+        output.WriteInt32(ToNodeId);
+      }
+      if (Index != 0) {
+        output.WriteRawTag(88);
+        output.WriteInt32(Index);
+      }
+      if (Value.Length != 0) {
+        output.WriteRawTag(98);
+        output.WriteString(Value);
+      }
+      if (SecretId != 0) {
+        output.WriteRawTag(104);
+        output.WriteInt32(SecretId);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (FromNodeId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(FromNodeId);
+      }
+      if (ToNodeId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(ToNodeId);
+      }
+      if (Index != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Index);
+      }
+      if (Value.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Value);
+      }
+      if (SecretId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(SecretId);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(SecretShare other) {
+      if (other == null) {
+        return;
+      }
+      if (other.FromNodeId != 0) {
+        FromNodeId = other.FromNodeId;
+      }
+      if (other.ToNodeId != 0) {
+        ToNodeId = other.ToNodeId;
+      }
+      if (other.Index != 0) {
+        Index = other.Index;
+      }
+      if (other.Value.Length != 0) {
+        Value = other.Value;
+      }
+      if (other.SecretId != 0) {
+        SecretId = other.SecretId;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 8: {
+            FromNodeId = input.ReadInt32();
+            break;
+          }
+          case 16: {
+            ToNodeId = input.ReadInt32();
+            break;
+          }
+          case 88: {
+            Index = input.ReadInt32();
+            break;
+          }
+          case 98: {
+            Value = input.ReadString();
+            break;
+          }
+          case 104: {
+            SecretId = input.ReadInt32();
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 8: {
+            FromNodeId = input.ReadInt32();
+            break;
+          }
+          case 16: {
+            ToNodeId = input.ReadInt32();
+            break;
+          }
+          case 88: {
+            Index = input.ReadInt32();
+            break;
+          }
+          case 98: {
+            Value = input.ReadString();
+            break;
+          }
+          case 104: {
+            SecretId = input.ReadInt32();
             break;
           }
         }

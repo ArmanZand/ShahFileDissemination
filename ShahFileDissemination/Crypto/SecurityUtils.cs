@@ -12,6 +12,53 @@ namespace ShahFileDissemination.Crypto
 {
     public class SecurityUtils
     {
+        public static (BigInteger LeftFactor, BigInteger RightFactor, BigInteger Gcd) Egcd(BigInteger left, BigInteger right)
+        {
+            //https://stackoverflow.com/questions/66645125/how-to-perform-multiplicative-inverse-in-c-sharp
+            BigInteger leftFactor = 0;
+            BigInteger rightFactor = 1;
+
+            BigInteger u = 1;
+            BigInteger v = 0;
+            BigInteger gcd = 0;
+
+            while (left != 0)
+            {
+                BigInteger q = right / left;
+                BigInteger r = right % left;
+
+                BigInteger m = leftFactor - u * q;
+                BigInteger n = rightFactor - v * q;
+
+                right = left;
+                left = r;
+                leftFactor = u;
+                rightFactor = v;
+                u = m;
+                v = n;
+
+                gcd = right;
+            }
+
+            return (LeftFactor: leftFactor,
+                    RightFactor: rightFactor,
+                    Gcd: gcd);
+        }
+        public static BigInteger ModInversion(BigInteger value, BigInteger modulo)
+        {
+            //https://stackoverflow.com/questions/66645125/how-to-perform-multiplicative-inverse-in-c-sharp
+            var egcd = Egcd(value, modulo);
+
+            if (egcd.Gcd != 1)
+                throw new ArgumentException("Invalid modulo", nameof(modulo));
+
+            BigInteger result = egcd.LeftFactor;
+
+            if (result < 0)
+                result += modulo;
+
+            return result % modulo;
+        }
         public static string ComputeHash(byte[] data)
         {
             using (SHA384 sha = SHA384.Create())

@@ -33,7 +33,8 @@ namespace Networking.Messages
         {
             socketHandle.Connected += OnConnected;
             socketHandle.Disconnected += OnDisconnected;
-            socketHandle.Read += (handle, message) => OnRead(handle, message);
+            socketHandle.Receive += (handle, message) => OnReceive(handle, message);
+            socketHandle.Ready += OnReady;
         }
         public void Start(string localAddress, int localPort)
         {
@@ -70,6 +71,7 @@ namespace Networking.Messages
                 };
                 SubscribeEvents(socketHandle);
                 if (!socketHandle.IsConnected) return;
+                OnReady(socketHandle, false);
                 pendingHandle.BeginReceive(socketHandle.m_buffer, 0, SocketHandle.m_bufferSize, 0, socketHandle.ReceiveCallback, socketHandle);
             }
             catch(ArgumentException) { }
@@ -105,24 +107,32 @@ namespace Networking.Messages
         }
 
         private void ListeningInstance(object endPoint)
-        {
-            IPEndPoint localEndPoint = endPoint as IPEndPoint;
-            Socket listenSocket = new Socket(localEndPoint.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
-            listenSocket.Bind(localEndPoint);
-            listenSocket.Listen(100);
-            m_IsListening = true;
-            OnListeningStatus(true,IP, Port);
-            while (IsListening)
+        {   try
             {
-                m_hangThread.Reset();
-                SocketAsyncEventArgs socketEventArgs = new SocketAsyncEventArgs();
-                socketEventArgs.Completed += SocketEventArgs_Completed;
-                socketEventArgs.UserToken = listenSocket;
-                listenSocket.AcceptAsync(socketEventArgs);
-                m_hangThread.WaitOne();
+                IPEndPoint localEndPoint = endPoint as IPEndPoint;
+                Socket listenSocket = new Socket(localEndPoint.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
+                listenSocket.Bind(localEndPoint);
+                listenSocket.Listen(100);
+                m_IsListening = true;
+                OnListeningStatus(true, IP, Port);
+                while (IsListening)
+                {
+                    m_hangThread.Reset();
+                    SocketAsyncEventArgs socketEventArgs = new SocketAsyncEventArgs();
+                    socketEventArgs.Completed += SocketEventArgs_Completed;
+                    socketEventArgs.UserToken = listenSocket;
+                    listenSocket.AcceptAsync(socketEventArgs);
+                    m_hangThread.WaitOne();
+                }
+                listenSocket.Close();
+                OnListeningStatus(false, IP, Port);
             }
-            listenSocket.Close();
-            OnListeningStatus(false,IP, Port);
+            catch (SocketException socketError)
+            {
+                Console.WriteLine($"{socketError.Message}");
+                m_IsListening = false;
+                OnListeningStatus(false, IP, Port);
+            }
         }
 
     }

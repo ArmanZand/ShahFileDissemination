@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Networking.Messages
+﻿namespace Networking.Messages
 {
     public class SocketEvents
     {
@@ -13,9 +7,12 @@ namespace Networking.Messages
         protected internal delegate void HandleDisconnectedEvent(SocketHandle socketHandle);
         protected internal event HandleDisconnectedEvent Disconnected;
         protected internal delegate void HandleReadEvent(SocketHandle socketHandle, ProtobufMessage message);
-        protected internal event HandleReadEvent Read;
+        protected internal event HandleReadEvent Receive;
+        protected internal delegate void HandleReady(SocketHandle socketHandle, bool initiator);
+        protected internal event HandleReady Ready;
         protected void OnConnected(SocketHandle socketHandle) => Connected?.Invoke(socketHandle);
         protected void OnDisconnected(SocketHandle socketHandle) => Disconnected?.Invoke(socketHandle);
-        protected void OnRead(SocketHandle socketHandle, ProtobufMessage message) => Read?.Invoke(socketHandle, message);
+        protected void OnReceive(SocketHandle socketHandle, ProtobufMessage message) => Receive?.Invoke(socketHandle, message);
+        protected void OnReady(SocketHandle socketHandle, bool initiator) => Ready?.Invoke(socketHandle, initiator);
     }
 }

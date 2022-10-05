@@ -1,7 +1,7 @@
 #!/bin/bash
 
-src_server_net_path=../SPServer/Networking/
-src_client_net_path=../SPClient/Networking/
+src_server_net_path=../Listener/
+src_client_net_path=../Listener/
 
 ./protoc.exe -I=. --csharp_out=. *.proto --experimental_allow_proto3_optional
 
