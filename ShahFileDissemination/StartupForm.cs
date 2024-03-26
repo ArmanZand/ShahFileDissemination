@@ -227,7 +227,7 @@ namespace ShahFileDissemination
                 ShahDissemination shah = new ShahDissemination(PublicMemory.SDParameters);
                 if (SecretTextBox.Text.Length != 0)
                 {
-                    secretParts.AddRange(SecretTextBox.Text.SplitToBigIntegers(PublicMemory.PrimeByteSize));
+                    secretParts.AddRange(SecretTextBox.Text.SplitToBigIntegers(PublicMemory.MaxSecretSize));
                     string rev = secretParts.ToArray().GetString();
                 }
                 else
@@ -261,7 +261,6 @@ namespace ShahFileDissemination
                                 };
                             }
                             handle.Send(pm);
-
                         }
                     }
                     DisseminateBtn.Enabled = true;
@@ -490,7 +489,7 @@ namespace ShahFileDissemination
                 IDTextBox.Text = ((int)SecurityUtils.NextBigInteger(1, 99)).ToString();
                 dPropagationTextBox.Text = DefaultParameters.dPropagation.ToString();
                 kThresholdTextBox.Text = DefaultParameters.kThreshold.ToString();
-                PrimeSizeLabel.Text = (PublicMemory.PrimeByteSize).ToString();
+                PrimeSizeLabel.Text = (PublicMemory.MaxSecretSize).ToString();
             }));
 
         }

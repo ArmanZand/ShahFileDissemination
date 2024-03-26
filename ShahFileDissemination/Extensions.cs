@@ -22,6 +22,7 @@ namespace ShahFileDissemination
         }
         public static BigInteger[] SplitToBigIntegers(this string str, int splitSize)
         {
+            if (splitSize <= 0) throw new ArgumentException("Split size must be greater than 1");
             if (str.Length == 0) return new BigInteger[] { 0 };
             List<BigInteger> bigInts = new List<BigInteger>();
             for (int i = 0; i < str.Length; i += splitSize)

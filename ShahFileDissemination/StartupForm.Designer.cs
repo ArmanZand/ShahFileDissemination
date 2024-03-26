@@ -40,6 +40,10 @@
             this.ListenerIPTextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.ConnectionsView = new ShahFileDissemination.SocketListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader12 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ConnectionMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.requestShareToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
@@ -91,10 +95,6 @@
             this.columnHeader15 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.RecSharesMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.viewShareToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ConnectionsView = new ShahFileDissemination.SocketListView();
-            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader12 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.recoverSecretToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -208,6 +208,39 @@
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Connections";
+            // 
+            // ConnectionsView
+            // 
+            this.ConnectionsView.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ConnectionsView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader2,
+            this.columnHeader12});
+            this.ConnectionsView.ContextMenuStrip = this.ConnectionMenuStrip;
+            this.ConnectionsView.FullRowSelect = true;
+            this.ConnectionsView.HideSelection = false;
+            this.ConnectionsView.Location = new System.Drawing.Point(9, 107);
+            this.ConnectionsView.Name = "ConnectionsView";
+            this.ConnectionsView.Size = new System.Drawing.Size(271, 262);
+            this.ConnectionsView.TabIndex = 10;
+            this.ConnectionsView.UseCompatibleStateImageBehavior = false;
+            this.ConnectionsView.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Node ID";
+            this.columnHeader1.Width = 52;
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Address";
+            this.columnHeader2.Width = 126;
+            // 
+            // columnHeader12
+            // 
+            this.columnHeader12.Text = "Role";
+            this.columnHeader12.Width = 80;
             // 
             // ConnectionMenuStrip
             // 
@@ -348,11 +381,11 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(38, 103);
+            this.label7.Location = new System.Drawing.Point(33, 103);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(105, 13);
+            this.label7.Size = new System.Drawing.Size(110, 13);
             this.label7.TabIndex = 2;
-            this.label7.Text = "Size of Prime (bytes):";
+            this.label7.Text = "Size of Secret (bytes):";
             // 
             // label6
             // 
@@ -646,39 +679,6 @@
             this.viewShareToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
             this.viewShareToolStripMenuItem.Text = "View Shares";
             this.viewShareToolStripMenuItem.Click += new System.EventHandler(this.viewShareToolStripMenuItem_Click);
-            // 
-            // ConnectionsView
-            // 
-            this.ConnectionsView.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.ConnectionsView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader1,
-            this.columnHeader2,
-            this.columnHeader12});
-            this.ConnectionsView.ContextMenuStrip = this.ConnectionMenuStrip;
-            this.ConnectionsView.FullRowSelect = true;
-            this.ConnectionsView.HideSelection = false;
-            this.ConnectionsView.Location = new System.Drawing.Point(9, 107);
-            this.ConnectionsView.Name = "ConnectionsView";
-            this.ConnectionsView.Size = new System.Drawing.Size(271, 262);
-            this.ConnectionsView.TabIndex = 10;
-            this.ConnectionsView.UseCompatibleStateImageBehavior = false;
-            this.ConnectionsView.View = System.Windows.Forms.View.Details;
-            // 
-            // columnHeader1
-            // 
-            this.columnHeader1.Text = "Node ID";
-            this.columnHeader1.Width = 52;
-            // 
-            // columnHeader2
-            // 
-            this.columnHeader2.Text = "Address";
-            this.columnHeader2.Width = 126;
-            // 
-            // columnHeader12
-            // 
-            this.columnHeader12.Text = "Role";
-            this.columnHeader12.Width = 80;
             // 
             // recoverSecretToolStripMenuItem
             // 

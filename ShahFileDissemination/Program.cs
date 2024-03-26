@@ -18,7 +18,7 @@ namespace ShahFileDissemination
             string input = "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBCC";
             List<BigInteger> secretParts = new List<BigInteger>();
             ShahDissemination shah = new ShahDissemination(PublicMemory.SDParameters);
-            secretParts.AddRange(input.SplitToBigIntegers(PublicMemory.PrimeByteSize));
+            secretParts.AddRange(input.SplitToBigIntegers(PublicMemory.MaxSecretSize));
             shah.GenerateMatrix(secretParts[0]);
             var p1i0 = shah.ComputeUniPoly(1);
             var p2i0 = shah.ComputeUniPoly(2);
@@ -69,15 +69,17 @@ namespace ShahFileDissemination
         [STAThread]
         static void Main(string[] args)
         {
+            SecurityUtils.NextBigInteger(1, 10);
             //PublicMemory.PrimeByteSize = DefaultParameters.Prime.ToByteArray().Length;
-            PublicMemory.PrimeByteSize = 100;
+            //PublicMemory.MaxSecretSize = SecurityUtils.ComputeMessageBlockSize(DefaultParameters.Prime);
+            PublicMemory.MaxSecretSize = 200;
             SDParameters parameters = new SDParameters();
             parameters.d = DefaultParameters.dPropagation;
             parameters.k = DefaultParameters.kThreshold;
             parameters.p = DefaultParameters.Prime;
             PublicMemory.SDParameters = parameters;
             //ShahTest();
-
+            SecurityUtils.NextBigInteger(1, 20);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new StartupForm(args));

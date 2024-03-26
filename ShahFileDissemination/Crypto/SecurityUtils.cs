@@ -12,6 +12,22 @@ namespace ShahFileDissemination.Crypto
 {
     public class SecurityUtils
     {
+        public static int ComputeMessageBlockSize(BigInteger Prime)
+        {
+            string hexPrime = Prime.ToString("X");
+            int primeLen = hexPrime.Length-1;
+            for(int i = primeLen-1; i --> 0;)
+            {
+                string testHex = new string('F', i);
+                testHex = "0" + testHex;
+                if(BigInteger.Parse(testHex, System.Globalization.NumberStyles.HexNumber) < Prime)
+                {
+                    return i;
+                }
+            }
+            throw new Exception("Cannot find an appropriate message block size given the input value.");
+            
+        }
         public static (BigInteger LeftFactor, BigInteger RightFactor, BigInteger Gcd) Egcd(BigInteger left, BigInteger right)
         {
             //https://stackoverflow.com/questions/66645125/how-to-perform-multiplicative-inverse-in-c-sharp
@@ -46,7 +62,6 @@ namespace ShahFileDissemination.Crypto
         }
         public static BigInteger ModInversion(BigInteger value, BigInteger modulo)
         {
-            //https://stackoverflow.com/questions/66645125/how-to-perform-multiplicative-inverse-in-c-sharp
             var egcd = Egcd(value, modulo);
 
             if (egcd.Gcd != 1)

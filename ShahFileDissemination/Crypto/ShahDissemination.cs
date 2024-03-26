@@ -20,10 +20,6 @@ namespace ShahFileDissemination.Crypto
             Params = parameters;
             SecretId = (int)(SecurityUtils.NextBigInteger(1, 999));
         }
-        public int MaxSecretByteSize
-        {
-            get { return Params.p.ToByteArray().Length; }
-        }
         public UnivariatePoly ComputeUniPoly(int ToNodeId)
         {
             UnivariatePoly poly = new UnivariatePoly(ToNodeId, SecretId);
@@ -45,7 +41,7 @@ namespace ShahFileDissemination.Crypto
         public void GenerateMatrix(BigInteger[] secrets)
         {
             if (secrets.Length != Params.d - Params.k + 1) throw new ArgumentException("Number of secrets must be equal to d-k + 1.");
-            int maxSecretByteSize = MaxSecretByteSize;
+            int maxSecretByteSize = PublicMemory.MaxSecretSize;
             for (int i = 0; i < secrets.Length; i++)
             {
                 if ((secrets[i].ToByteArray().Length > maxSecretByteSize))

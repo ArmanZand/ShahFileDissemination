@@ -15,7 +15,7 @@ namespace ShahFileDissemination
         public static List<SocketHandle> connectedHandles = new List<SocketHandle>();
         public static SocketListener Listener = new SocketListener();
         public static int NodeId = 0;
-        public static int PrimeByteSize = 0;
+        public static int MaxSecretSize = 0;
 
         //public static Dictionary<int, List<UnivariatePoly>> ReceivedPolynomials = new Dictionary<int, List<UnivariatePoly>>();
         public static Dictionary<int, PolynomialSequence> PolysBySecretId = new Dictionary<int, PolynomialSequence>();
@@ -26,7 +26,6 @@ namespace ShahFileDissemination
     }
     public class DefaultParameters
     {
-        
         public static string ListenerIP = "192.168.1.30";
         public static int ListenerPort = 4444;
         public static string RemoteIP = "192.168.1.30";
